@@ -6,12 +6,15 @@ import jakarta.persistence.*;
 @Table(name = "Marinheiros")
 public class Marinheiro {
     @Id
-            @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private int idade;
     private String cargo;
     private boolean Akumado;
+
+    public Marinheiro(){
+    }
 
     public boolean isAkumado() {
         return Akumado;
