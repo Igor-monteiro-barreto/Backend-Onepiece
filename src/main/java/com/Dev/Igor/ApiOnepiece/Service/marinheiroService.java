@@ -35,5 +35,23 @@ public class marinheiroService {
     public void deleteMarinheiro(Long id){
         repository.deleteById(id);
     }
+    //
 
+    public Marinheiro updateMarinheiro(Long id, Marinheiro marinheiro) {
+        Optional<Marinheiro> oldMarinheiro = repository.findById(id);
+
+        if (oldMarinheiro.isPresent()) {
+            Marinheiro newMarinheiro = oldMarinheiro.get();
+
+            // Atualiza os campos do marinheiro existente
+            newMarinheiro.setNome(marinheiro.getNome());
+            newMarinheiro.setIdade(marinheiro.getIdade());
+            newMarinheiro.setCargo(marinheiro.getCargo());
+            newMarinheiro.setAkumado(marinheiro.isAkumado());
+
+            return repository.save(newMarinheiro); // Salva e retorna o marinheiro atualizado
+        } else {
+            throw new RuntimeException("Marinheiro não encontrado com o ID: " + id + ". Tente novamente.");
+        }
+    }
 }

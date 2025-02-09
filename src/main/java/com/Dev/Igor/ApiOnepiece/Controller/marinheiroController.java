@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RestController
@@ -38,5 +37,15 @@ public class marinheiroController {
     public void deleteMarinheiro(@PathVariable Long id){
         service.deleteMarinheiro(id);
     }
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> updateMarinheiro(@PathVariable Long id, @RequestBody Marinheiro marinheiro) {
+        try {
+            Marinheiro updatedMarinheiro = service.updateMarinheiro(id, marinheiro);
+            return ResponseEntity.ok(updatedMarinheiro);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
+    }
+
 
 }
