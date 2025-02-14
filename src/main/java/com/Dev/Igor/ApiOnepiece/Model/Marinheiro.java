@@ -10,7 +10,7 @@ public class Marinheiro {
     private Long id;
     private String nome;
     private int idade;
-    private String cargo;
+    private Cargo cargo;
     private boolean Akumado;
 
     public Marinheiro(){
@@ -24,11 +24,11 @@ public class Marinheiro {
         Akumado = akumado;
     }
 
-    public String getCargo() {
+    public Cargo getCargo() {
         return cargo;
     }
 
-    public void setCargo(String cargo) {
+    public void setCargo(Cargo cargo) {
         this.cargo = cargo;
     }
 

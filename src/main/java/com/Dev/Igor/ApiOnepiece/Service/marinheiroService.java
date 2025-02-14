@@ -1,5 +1,6 @@
 package com.Dev.Igor.ApiOnepiece.Service;
 
+import com.Dev.Igor.ApiOnepiece.Model.Cargo;
 import com.Dev.Igor.ApiOnepiece.Model.Marinheiro;
 import com.Dev.Igor.ApiOnepiece.Repository.marinheiroRepository;
 import org.springframework.http.HttpStatus;
