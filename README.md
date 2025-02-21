@@ -24,7 +24,6 @@
 - Atributos da aplicação nome, idade, cargo e Akumado.
 - Os atributos estão no ``Todolist\src\main\java\Model\Todo.java ``
 
-
 - Passo a passo recomendado:
     - Rode (de um run no ```ApiOnepiece\src\main\java\ApiOnepieceApplication.java```) a aplicação e verifique se esta conectando com o Bando de Dados.
     - Vá para o Postman e teste essas URL´s:
@@ -46,13 +45,17 @@
 - Usei o Flayway para ter um versionamento melhor no banco de dados
 
     - Table do arquivo db/Migration
-    - ``CREATE TABLE marinheiro(
+  
+  ```sql 
+  CREATE TABLE marinheiro(
     id SERIAL PRIMARY KEY,
     nome VARCHAR(77) NOT NULL,
     idade INT NOT NULL,
-    cargo VARCHAR(77) NOT NULL,
-    Akumado BOOLEAN NOT NULL
-);``
+    cargo ENUM('Almirante', 'Vice_Almirante', 'Capitão', 'Recruta',
+     'Almirante_de_Frota', 'vice_capitão',
+     'Contra_Almirante', 'Aprendiz_de_Marinheiro', 'Tenente') NOT NULL,
+    Akumado BOOLEAN NOT NULL);
+  ````
 
 ### Use Credenciais para acessar o banco de dados em um SGBD
     - Suas credenciais 
@@ -60,5 +63,35 @@
     -spring.datasource.username=seu_username
     -spring.datasource.password=sua_senha
     -spring.jpa.hibernate.ddl-auto=update
+
+## Testando aplicação com Postmam ou Insomaniac
+
+- body da requisição **POST**
+```json
+{
+"nome": "Zé",
+"idade": 55,
+"cargo": "Recruta",
+"Akumado": true
+}
+```
+- endereço ``localhost:8080/marinheiros/create``
+
+- Teste para encontrar por ID:
+- ``localhost:8080/marinheiros/1``
+- Testar o delete 
+- ``localhost:8080/marinheiros/delete/1``
+- Testar o findAll
+- ``localhost:8080/marinheiros/findAll``
+- Testar o update 
+- ``localhost:8080/marinheiros/update/2``
+```json
+{
+  "nome": "Monkey D.Garp",
+  "idade": 76,
+  "cargo": "Almirante",
+  "Akumado": false
+}
+```
 
 ## Esta Incompleta mas logo logo vou terminar...
