@@ -37,6 +37,8 @@ public class marinheiroService {
         repository.deleteById(id);
     }
     //
+      // Atualizando apenas um atributo
+
 
     public Marinheiro updateMarinheiro(Long id, Marinheiro marinheiro) {
         Optional<Marinheiro> oldMarinheiro = repository.findById(id);

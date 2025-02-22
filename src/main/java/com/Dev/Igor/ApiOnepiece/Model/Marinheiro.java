@@ -10,6 +10,7 @@ public class Marinheiro {
     private Long id;
     private String nome;
     private int idade;
+    @Enumerated(EnumType.STRING)
     private Cargo cargo;
     private boolean Akumado;
 
